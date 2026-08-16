@@ -263,6 +263,24 @@ ul { list-style: none; }
   gap: 0.625rem;
 }
 
+.navbar__logo-img {
+  height: 36px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.3s var(--ease);
+}
+
+.navbar__logo-img:hover {
+  opacity: 0.85;
+}
+
+.footer__logo-img {
+  height: 64px;
+  width: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
 .navbar__logo-icon {
   display: flex;
   align-items: center;
