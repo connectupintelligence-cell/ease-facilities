@@ -376,10 +376,10 @@ ul { list-style: none; }
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-color: var(--navy);
   background-image: url('img/hero-pousada.jpg');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   overflow: hidden;
 }
 
@@ -1344,12 +1344,5 @@ ul { list-style: none; }
 
   .capture-card__header {
     padding: 1.25rem 1.5rem;
-  }
-}
-
-/* Parallax fix for mobile */
-@supports (-webkit-touch-callout: none) {
-  .hero {
-    background-attachment: scroll;
   }
 }
