@@ -547,7 +547,7 @@
             </li>
             <li>
               <i class="ri-whatsapp-line"></i>
-              <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">(11) 99999-9999</a>
+              <a href="https://wa.me/5512997843187" target="_blank" rel="noopener">(12) 99784-3187</a>
             </li>
           </ul>
         </div>
@@ -561,7 +561,7 @@
 
 
   <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
-  <a href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20gest%C3%A3o%20de%20demanda%20para%20minha%20pousada." 
+  <a href="https://wa.me/5512997843187?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20gest%C3%A3o%20de%20demanda%20para%20minha%20pousada." 
      class="whatsapp-float" 
      target="_blank" 
      rel="noopener"
@@ -740,17 +740,25 @@
 
       if (!name || !email || !whatsapp || !pousada) return;
 
-      // Simulate sending (replace with actual API call)
       const submitBtn = document.getElementById('btn-submit');
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="ri-loader-4-line spin"></i> Enviando...';
 
-      setTimeout(() => {
+      const leadPayload = { name, email, whatsapp, pousada, submittedAt: new Date().toISOString() };
+
+      // Envia para o backend se disponível (graceful fallback no GitHub Pages estático)
+      fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadPayload)
+      }).catch(() => {
+        // Fallback silencioso para ambiente estático
+      }).finally(() => {
         captureForm.classList.add('hidden');
         formSuccess.classList.remove('hidden');
 
         // Build WhatsApp message
-        const waNumber = '5511999999999'; // Replace with actual number
+        const waNumber = '5512997843187';
         const waMessage = encodeURIComponent(
           `Olá! Sou ${name}, proprietário(a) da ${pousada}.\n` +
           `E-mail: ${email}\nWhatsApp: ${whatsapp}\n\n` +
@@ -762,12 +770,7 @@
         if (waLink) {
           waLink.href = `https://wa.me/${waNumber}?text=${waMessage}`;
         }
-
-        // Also send via WhatsApp API (opens new window)
-        // Uncomment the line below to auto-open WhatsApp after form submission
-        // window.open(`https://wa.me/${waNumber}?text=${waMessage}`, '_blank');
-
-      }, 1500);
+      });
     });
 
     // ==============================

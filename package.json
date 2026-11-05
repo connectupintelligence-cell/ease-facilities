@@ -1,0 +1,19 @@
+{
+  "name": "ease-facilities",
+  "version": "1.0.0",
+  "description": "Ease Facilities - Gestão profissional de demanda para pousadas",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "landing-page",
+    "hospitality",
+    "pousadas",
+    "leads",
+    "ease-facilities"
+  ],
+  "author": "ConnectUP Intelligence",
+  "license": "MIT"
+}
